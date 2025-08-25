@@ -15,6 +15,11 @@ function searchWriteups() {
         
         card.style.display = matches ? "block" : "none";
     });
+    
+    // Refresh pagination after search
+    if (window.paginationInstance) {
+        window.paginationInstance.refresh();
+    }
 }
 
 // Add search input to pages if it doesn't exist
